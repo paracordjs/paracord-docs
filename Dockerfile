@@ -1,10 +1,22 @@
-FROM node:lts
+FROM node:lts AS npm_build
 
-WORKDIR /app/website
+WORKDIR /app
 
-EXPOSE 3000 35729
-COPY ./docs /app/docs
-COPY ./website /app/website
+COPY ./package.json /app/package.json
 RUN yarn install
+COPY ./src /app/src
+COPY ./static /app/static
+COPY ./docs /app/docs
+COPY docusaurus.config.js sidebars.json babel.config.js /app/
 
-CMD ["yarn", "start"]
+RUN ls -lah /app/
+
+RUN yarn run build
+
+RUN ls -lah /app/build/
+
+FROM nginx:alpine
+COPY --from=npm_build /app/build /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/
+EXPOSE 3000
+CMD ["nginx", "-g", "daemon off;"]
