@@ -37,7 +37,7 @@ const siteConfig = {
         src: 'img/logo.svg',
       },
       links: [
-        {to: 'docs/doc', label: 'Getting Started' },
+        {to: 'docs/simple_usage', label: 'Get Started' },
       ],
     },
     footer: {
