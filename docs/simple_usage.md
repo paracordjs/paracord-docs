@@ -1,5 +1,5 @@
 ---
-id: doc
+id: simple_usage
 title: Get started
 sidebar_label: Get started
 ---
