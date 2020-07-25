@@ -37,6 +37,11 @@ const siteConfig = {
         src: 'img/logo.svg',
       },
       links: [
+        {
+          href: 'https://github.com/paracordjs/paracord',
+          label: 'GitHub',
+          position: 'right',
+        },
         {to: 'docs/simple_usage', label: 'Get Started' },
       ],
     },
